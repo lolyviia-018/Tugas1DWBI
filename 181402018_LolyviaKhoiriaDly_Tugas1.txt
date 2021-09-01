@@ -1,0 +1,86 @@
+CREATE TABLE customer (
+custno varchar(11) NOT NULL,
+custname varchar(20) NOT NULL,
+address varchar(25) NOT NULL,
+Internal varchar(11) NOT NULL,
+contact varchar(20) NOT NULL,
+phone varchar(11) NOT NULL,
+city varchar(10) NOT NULL,
+state varchar(5) NOT NULL,
+zip varchar(11) NOT NULL,
+CONSTRAINT customerPk PRIMARY KEY (custno)
+);
+
+INSERT INTO customer
+	(custno, custname, address, Internal, contact, phone, city, state, zip)
+	VALUES ('C100','Football','Box352200','Y','Mary Manager','6857100','Boulder','CO','80309');
+
+INSERT INTO customer
+	(custno, custname, address, Internal, contact, phone, city, state, zip)
+	VALUES ('C101',"Men's Basketball",'Box352400','Y','Sally Supervisor','5413700','Boulder','CO','80309');
+
+INSERT INTO customer
+	(custno, custname, address, Internal, contact, phone, city, state, zip)
+	VALUES ('C103','Basebal','Box352020','Y','Bill Baseball','5431234','Boulder','CO','80309');
+
+INSERT INTO customer
+	(custno, custname, address, Internal, contact, phone, city, state, zip)
+	VALUES ('C104',"Women's Softball",'Box351200','Y','Sue Softball','5434321','Boulder','CO','80309');
+
+INSERT INTO customer
+	(custno, custname, address, Internal, contact, phone, city, state, zip)
+	VALUES ('C105','High School Football','123 AnyStreet','N','Coach Bob','4441234','Louisville','CO','80027');
+
+
+CREATE TABLE facility (
+facno varchar(11) NOT NULL,
+facname varchar(20) NOT NULL,
+CONSTRAINT facility PRIMARY KEY (facno),
+CONSTRAINT facilname UNIQUE (facno)
+);
+
+INSERT INTO facility
+	(facno, facname)
+	VALUES ('F100','Football stadium');
+
+INSERT INTO facility
+	(facno, facname)
+	VALUES ('F101','Basketball arena');
+
+INSERT INTO facility
+	(facno, facname)
+	VALUES ('F102','Basketball field');
+
+INSERT INTO facility
+	(facno, facname)
+	VALUES ('F103','Recreation room');
+
+CREATE TABLE `location` (
+locno varchar(11),
+facno varchar(11),
+locname varchar(25) NOT NULL,
+CONSTRAINT locationPk PRIMARY KEY (locno),FOREIGN KEY (facno) REFERENCES facility(facno)
+);
+
+
+INSERT INTO location
+	(locno, facno, locname)
+	VALUES ('L100', 'F100', 'Locker room');
+INSERT INTO location
+	(locno, facno, locname)
+	VALUES ('L101', 'F100', 'Plaza');
+INSERT INTO location
+	(locno, facno, locname)
+	VALUES ('L102', 'F100', 'Vehicle gate');
+INSERT INTO location
+	(locno, facno, locname)
+	VALUES ('L103', 'F101', 'Locker room');
+INSERT INTO location
+	(locno, facno, locname)
+	VALUES ('L104', 'F100', 'Ticket Booth');
+INSERT INTO location
+	(locno, facno, locname)
+	VALUES ('L105', 'F101', 'Gate');
+INSERT INTO location
+	(locno, facno, locname)
+	VALUES ('L106', 'F100', 'Pedestrian gate');
